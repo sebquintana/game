@@ -1,18 +1,29 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/gin-gonic/gin"
+	_ "github.com/heroku/x/hmetrics/onload"
 )
 
-func hello(w http.ResponseWriter, req *http.Request) {
-
-    fmt.Fprintf(w, "Por algo se empieza kinga ...\n")
-}
-
 func main() {
+	port := os.Getenv("PORT")
 
-    http.HandleFunc("/", hello)
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
-    http.ListenAndServe(":8090", nil)
+	router := gin.New()
+	router.Use(gin.Logger())
+	router.LoadHTMLGlob("templates/*.tmpl.html")
+	router.Static("/static", "static")
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl.html", nil)
+	})
+
+	router.Run(":" + port)
 }
