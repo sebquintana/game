@@ -1,1 +1,1 @@
-web: bin/cuareterna-game
+web: bin/go-getting-started
