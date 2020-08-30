@@ -253,7 +253,7 @@ function startNewDrawing()
 	$('.canvas').show();
 
 	var counter = maxTimeSecs;
-	$('#clock-time').html('00:20');
+	$('#clock-time').html('00:05');
 
 	timer = setInterval(function()
 	{
