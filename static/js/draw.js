@@ -66,12 +66,6 @@ function setupButtonBehavior()
 			}
 		});
 	});
-	
-	$('.card-results .template button').on('click', function() 
-	{
-		$(this).find('.svg-margin-25').toggle();
-		$(this).find('.example').toggle();
-	});
 }
 
 function setupAppFlow()
