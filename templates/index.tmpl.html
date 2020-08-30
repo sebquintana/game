@@ -1,16 +1,83 @@
 <html>
   {{template "header.tmpl.html"}}
 <body>
-  {{template "nav.tmpl.html"}}
-
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/static/lang-logo.png">
-    </a>
-    <h1>Cuareterna</h1>
-      <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-go"><span class="glyphiconglyphicon-flash"></span> Jugar </a>
+  <div class="home">
+    <div class="card">
+      <button class="button button-large button-yellow" id="new-card"><span>Dibujar!</span></button>
+    </div>
   </div>
-</div>
+
+  <div class="canvas" style="display:none;">
+    <div class="topbar">
+      <div id="topbar-text"></div>
+      <div id="clock" class="text-blink">
+        <div id="clock-time">00:00</div>
+      </div>
+      <div id="topbar-buttons">
+        <button class="button button-small button-gray " id="button-clear">
+          <span class="fas fa-eraser"></span>
+        </button>
+        <button class="button button-small button-gray " id="button-skip">
+          <span class="fas fa-forward"></span>
+        </button>
+        <button class="button button-small button-close">
+        </button>
+      </div>
+    </div>
+    <div id="drawing"></div>
+  </div>
+
+  <div class="card-container card-challenge" style="display:none;">
+    <div class="level"></div>
+
+    <div class="card">
+      <div class="card-text">
+        <div class="text">Dibuja</div>
+        <div class="challenge"></div>
+        <div class="time">en menos de 20 segundos</div>
+
+        <button class="button button-large button-green" id="gotit"><span>A dibujar!</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-wrapper" id="popup-quit" style="display:none;">
+    <div class="popup-box">
+      <div class="popup-text">Salir?</div>
+      <div class="popup-buttons">
+        <button class="button button-large button-yellow" id="popup-quit-cancel"><span class="center">Cancelar</span></button>
+        <button class="button button-large button-yellow" id="popup-quit-quit"><span class="center">Salir</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-container card-results" style="display:none;">
+    <div class="wrapper">
+      <div class="headline ">
+        <div id="timesup-title">Dibujos</div>
+      </div>
+
+      <div class="timesup-round button button-drawing template">
+        <button class="timesup-drawing">
+          <div class="timesup-drawing-status"></div>
+          <svg width="130" height="70" class="svg-margin-25"></svg>
+        </button>
+      </div>
+
+      <div class="card-row"><div class="container"></div></div>
+
+      <div class="card-row" id="portfolio">
+        <div class="card-text">
+          <button id="button-timesup-play" class="button button-large button-green"><span class="center">Jugar de nuevo</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/static/js/svg.min.js"></script>
+  <script type="text/javascript" src="/static/js/svg.draw.min.js"></script>
+  <script type="text/javascript" src="/static/js/resemble.js"></script>
+  <script type="text/javascript" src="/static/js/draw.js"></script>
 </body>
 </html>
